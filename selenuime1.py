@@ -1,5 +1,5 @@
 from selenium import webdriver as wb 
-
+import json
 
 
 driver = wb.Chrome('/Users/benmoussaothmane/Downloads/chromedriver')
@@ -12,12 +12,26 @@ source = driver.page_source
 
 p = driver.find_elements_by_class_name('a-price-whole')
 t = driver.find_elements_by_class_name('a-color-price')
+
 num_page = len(p)
+num_page = len(t)
+d = {}
+ll = []
+
+for i in p:
+    d["price"] = i.text
+    ll.append(i.text)
+
+    with open("selenuime.json" , "w") as f:
+        f.write(json.dumps(ll , indent = 3 , sort_keys = True))
+
+for j in t:
+    d["text"] = j.text
+    ll.append(j.text)
+
+    with open("selenuime.json" , "w") as f:
+        f.write(json.dumps(ll , indent  =3 , sort_keys = True))
 
 
-
-for i in range(num_page):
-    print(p[i].text + "      " + t[i].text)
-
-
-driver.close()
+print(ll)
+# driver.close()

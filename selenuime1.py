@@ -20,18 +20,18 @@ ll = []
 
 for i in p:
     d["price"] = i.text
-    ll.append(i.text)
+    ll.append(d)
 
     with open("selenuime.json" , "w") as f:
         f.write(json.dumps(ll , indent = 3 , sort_keys = True))
 
 for j in t:
     d["text"] = j.text
-    ll.append(j.text)
+    ll.append(d)
 
     with open("selenuime.json" , "w") as f:
         f.write(json.dumps(ll , indent  =3 , sort_keys = True))
 
 
 print(ll)
-# driver.close()
+driver.close()
